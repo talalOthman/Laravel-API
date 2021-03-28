@@ -18,6 +18,8 @@ class ApiAuthController extends Controller
             'password' => 'required|confirmed'
         ]);
 
+        $validatedData['password'] = bcrypt($req->password);
+
         $user = User::create($validatedData);
 
         $accessToken = $user->createToken('authToken')->accessToken;
@@ -29,5 +31,17 @@ class ApiAuthController extends Controller
 
     public function login(Request $req){
 
+        $loginData = $req->validate([
+            'email' => 'email|required',
+            'password' => 'required'
+        ]);
+
+        if(!auth()->attempt($loginData)){
+            return response(['message' => 'Invalid credentials']);
+        };
+
+        $accessToken = auth()->user()->createToken('authToken')->accessToken;
+        
+        return response(['user' => auth()->user(), 'access_token' => $accessToken]);
     }
 }
