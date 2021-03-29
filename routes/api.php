@@ -16,12 +16,14 @@ use App\Http\Controllers\ApiAuthController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
 
-Route::get('get', [ApiController::class, 'showData']);
+
 
 Route::post('register', [ApiAuthController::class, 'register']);
 
 Route::post('login', [ApiAuthController::class, 'login']);
+
+Route::middleware('auth:api')->get('getUsers', [ApiAuthController::class, 'returnUsers']);

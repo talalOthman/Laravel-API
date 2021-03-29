@@ -44,4 +44,9 @@ class ApiAuthController extends Controller
         
         return response(['user' => auth()->user(), 'access_token' => $accessToken]);
     }
+
+
+    public function returnUsers(){
+        return User::all();
+    }
 }
