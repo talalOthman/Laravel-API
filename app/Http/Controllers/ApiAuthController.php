@@ -47,6 +47,8 @@ class ApiAuthController extends Controller
 
 
     public function returnUsers(){
-        return User::all();
+        
+        $userList = User::paginate(5);
+        return $userList;
     }
 }
