@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth:api'], function(){ // routes that needs auth
 
     Route::get('getAllUsers', [CrudController::class, 'getAllUsers']);
     Route::post('createUser', [CrudController::class, 'createUser']);
+    Route::post('getUser/{id}', [CrudController::class, 'getUserById']);
 
 });
 

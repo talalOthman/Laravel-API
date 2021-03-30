@@ -47,16 +47,7 @@ class CrudController extends Controller
         return $userList;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+   
 
     /**
      * Display the specified resource.
@@ -64,9 +55,14 @@ class CrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getUserById($id)
     {
-        //
+        $user = User::find($id);
+        if(is_null($user)){
+            return response(['message' => 'User not found'], 404);
+        }
+
+        return response($user::find($id), 200);
     }
 
     /**

@@ -39,7 +39,7 @@ class ApiAuthController extends Controller
         ]);
 
         if(!auth()->attempt($loginData)){
-            return response(['message' => 'Invalid credentials']);
+            return response(['message' => 'Invalid credentials'], 404);
         };
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
