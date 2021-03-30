@@ -22,7 +22,7 @@ class CrudController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $req)
+    public function createUser(Request $req)
     {
         //
         $validatedData = $req->validate([
@@ -38,6 +38,13 @@ class CrudController extends Controller
         $accessToken = $user->createToken('authToken')->accessToken;
 
         return response(['status' => 'success','user' => $user, 'new_access_token' => $accessToken]);
+    }
+
+
+    public function getAllUsers(){
+        
+        $userList = User::paginate(2);
+        return $userList;
     }
 
     /**

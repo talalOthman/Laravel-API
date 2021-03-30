@@ -29,8 +29,8 @@ Route::post('login', [ApiAuthController::class, 'login']);
 
 Route::group(['middleware' => 'auth:api'], function(){ // routes that needs authentication
 
-    Route::get('getUsers', [ApiAuthController::class, 'returnUsers']);
-    Route::post('create', [CrudController::class, 'create']);
+    Route::get('getAllUsers', [CrudController::class, 'getAllUsers']);
+    Route::post('createUser', [CrudController::class, 'createUser']);
 
 });
 
