@@ -28,10 +28,18 @@ Route::post('login', [ApiAuthController::class, 'login']);
 
 
 Route::group(['middleware' => 'auth:api'], function(){ // routes that needs authentication
-
+    
+    // Get all Users
     Route::get('getAllUsers', [CrudController::class, 'getAllUsers']);
+    
+    // Create a User
     Route::post('createUser', [CrudController::class, 'createUser']);
+    
+    // Get Specific User
     Route::get('getUser/{id}', [CrudController::class, 'getUserById']);
+
+    // Update a Specifc User
+    Route::put('updateUser/{id}', [CrudController::class, 'updateUser']);
 
 });
 

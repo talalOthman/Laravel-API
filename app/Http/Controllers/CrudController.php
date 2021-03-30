@@ -65,16 +65,7 @@ class CrudController extends Controller
         return response($user::find($id), 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+    
 
     /**
      * Update the specified resource in storage.
@@ -83,9 +74,15 @@ class CrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateUser(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        if(is_null($user)){
+            return response(['message' => 'User not found'], 404);
+        }
+
+        $user->update($request->all());
+        return response($user, 200);
     }
 
     /**
