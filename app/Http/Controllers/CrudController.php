@@ -91,8 +91,15 @@ class CrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteUser(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        if(is_null($user)){
+            return response(['message' => 'User not found'], 404);
+        }
+
+        $user->delete();
+        return response(['message' => 'User deleted'], 200);
     }
 }

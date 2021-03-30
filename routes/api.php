@@ -41,6 +41,9 @@ Route::group(['middleware' => 'auth:api'], function(){ // routes that needs auth
     // Update a Specifc User
     Route::put('updateUser/{id}', [CrudController::class, 'updateUser']);
 
+    // Delete a Specific User
+    Route::delete('deleteUser/{id}', [CrudController::class, 'deleteUser']);
+
 });
 
 
