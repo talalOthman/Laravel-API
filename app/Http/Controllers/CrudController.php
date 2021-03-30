@@ -37,7 +37,7 @@ class CrudController extends Controller
 
         $accessToken = $user->createToken('authToken')->accessToken;
 
-        return response(['status' => 'success','user' => $user, 'new_access_token' => $accessToken]);
+        return response(['status' => 'success','user' => $user, 'new_access_token' => $accessToken], 201);
     }
 
 
