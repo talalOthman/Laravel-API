@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use League\Fractal;
+use App\Transformer\UserTransformer;
 
 class ApiAuthController extends Controller
 {
@@ -48,7 +50,7 @@ class ApiAuthController extends Controller
 
     public function returnUsers(){
         
-        $userList = User::paginate(5);
+        $userList = User::paginate(2);
         return $userList;
     }
 }

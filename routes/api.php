@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\CrudController;
 use App\Http\Controllers\ApiAuthController;
 
 /*
@@ -30,7 +30,8 @@ Route::post('login', [ApiAuthController::class, 'login']);
 Route::group(['middleware' => 'auth:api'], function(){ // routes that needs authentication
 
     Route::get('getUsers', [ApiAuthController::class, 'returnUsers']);
-    Route::get('get', [ApiController::class, 'showData']);
+    Route::post('create', [CrudController::class, 'create']);
+
 });
 
 
