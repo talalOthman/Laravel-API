@@ -81,8 +81,14 @@ class CrudController extends Controller
             return response(['message' => 'User not found'], 404);
         }
 
+        $vaidatedData = $request->validate([
+            'email' => 'email',
+            'password' => 'min:6'
+        ]);
+        
+
         $user->update($request->all());
-        return response($user, 200);
+        return response(['message' => 'User has been updated'], 200);
     }
 
     /**

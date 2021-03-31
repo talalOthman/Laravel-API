@@ -17,7 +17,7 @@ class ApiAuthController extends Controller
         $validatedData = $req->validate([
             'name' => 'required|max:55',
             'email' => 'email|required|unique:users',
-            'password' => 'required|confirmed'
+            'password' => 'required|confirmed|min:6',
         ]);
 
         $validatedData['password'] = bcrypt($req->password);

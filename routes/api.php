@@ -48,13 +48,10 @@ Route::group(['middleware' => 'auth:api'], function(){ // routes that needs auth
     
     
     
-    
-
-});
-
-
-Route::get('importForm', [CsvController::class, 'importUploadForm']);
+    Route::get('importForm', [CsvController::class, 'importUploadForm']);
 
     Route::post('importForm', [CsvController::class, 'import'])->name('import.file');
+
+});
 
 
