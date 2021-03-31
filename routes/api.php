@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\ApiAuthController;
+use App\Http\Controllers\CsvController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,16 @@ Route::group(['middleware' => 'auth:api'], function(){ // routes that needs auth
     // Delete a Specific User
     Route::delete('deleteUser/{id}', [CrudController::class, 'deleteUser']);
 
+    
+    
+    
+    
+
 });
+
+
+Route::get('importForm', [CsvController::class, 'importUploadForm']);
+
+    Route::post('importForm', [CsvController::class, 'import'])->name('import.file');
 
 
